@@ -14,7 +14,7 @@ Le jeu permet à plusieurs joueurs de se connecter à une partie via un réfléc
 
 ## 👥 Équipe
 
-- Gabriel Kreutser *(développement de l'interface administrateur, d'une IA, et d'une interface graphique joueur)*
+- Gabriel Kreutser 
 - Matheo Leroy-Chatelain  
 - Yaroslava Khrabrova  
 - Wissal-Asma Harrat  
