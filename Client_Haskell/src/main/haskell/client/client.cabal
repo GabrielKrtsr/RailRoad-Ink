@@ -1,0 +1,70 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           client
+version:        0.1.0.0
+category:       Networking
+author:         Yaroslava Khrabrova
+maintainer:     yaroslava.khrabrova.etu@univ-lille.fr
+license:        MIT
+build-type:     Simple
+
+library
+  exposed-modules:
+      Client
+      MessageValidator
+      Automaton
+  other-modules:
+      Main
+      Paths_client
+  hs-source-dirs:
+      app
+  ghc-options: -Wall
+  build-depends:
+      HUnit
+    , base >=4.7 && <5
+    , hspec
+    , text
+    , websockets
+  default-language: Haskell2010
+
+executable client
+  main-is: Main.hs
+  other-modules:
+      Automaton
+      Client
+      MessageValidator
+      Paths_client
+  hs-source-dirs:
+      app
+  ghc-options: -Wall
+  build-depends:
+      HUnit
+    , base >=4.7 && <5
+    , client
+    , hspec
+    , text
+    , websockets
+  default-language: Haskell2010
+
+test-suite client-test
+  type: exitcode-stdio-1.0
+  main-is: TestMain.hs
+  other-modules:
+      TestAutomaton
+      TestMessageValidator
+      Paths_client
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HUnit
+    , base
+    , client
+    , hspec
+    , text
+    , websockets
+  default-language: Haskell2010

@@ -1,0 +1,297 @@
+package board;
+import util.util_for_nodes.Node;
+import util.util_for_nodes.Side;
+import rules.*;
+import java.util.List;
+import java.util.Set;
+import util.*;
+import cell.Cell;
+import cell.CentralCell;
+import cell.ClassicCell;
+import face.AbstractFace;
+import graph.Edge;
+import graph.Graph;
+
+
+/**
+ * Represents a generic abstract game board composed of a grid of cells.
+ */
+public abstract class Board{
+
+    /**
+     * ANSI color code for white background.
+     * */
+    public static final String WHITE = "\u001B[47m";
+
+    /**
+     * ANSI reset color code.
+     * */
+    public static final String RESET = "\u001B[0m";
+
+    /**
+     *  ANSI color code for green background.
+     * */
+    public static final String GREEN = "\u001B[42m";
+
+    /** Graph representation of the board. */
+    private SimpleBoardGraph graph;
+    /**
+     * The grid of cells on the game board.
+     * */
+    protected Cell[][] cells;
+
+
+
+
+    /**
+     * Displays the board in the console with color representation.
+     */
+    public void display() {
+        for (int i = 0; i < this.cells.length; i++) {
+            for (int j = 0; j < this.cells.length; j++) {
+                if(this.cells[i][j].getFace() == null) System.out.print(WHITE + "  " + RESET + " ");
+                else System.out.print(GREEN + "  " + RESET + " ");
+            }
+            System.out.println();
+            System.out.println();
+        }
+    }
+
+    /**
+     * Constructs a game board of specified size
+     *
+     * @param size the size of the board
+     */
+    public Board(int size) {
+        this.cells = new Cell[size][size];
+        this.init();
+        this.initBorderCell();
+        this.graph = new SimpleBoardGraph();
+    }
+
+    /**
+     * Initializes the grid of cells for the board. The grid is divided into sections
+     * where specific cells are placed based on their position within the grid.
+     */
+    private void init() {
+        int size = this.cells.length;
+        int sizeMiddle = size / 2;
+        int blockSize = 3;
+
+        int start = sizeMiddle - blockSize / 2;
+        int end = sizeMiddle + blockSize / 2;
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (i >= start && i <= end && j >= start && j <= end) {
+                    this.cells[i][j] = new CentralCell();
+                } else {
+                    this.cells[i][j] = new ClassicCell();
+                }
+            }
+        }
+    }
+
+    //for graph
+    /**
+     * Adds a graph to the board.
+     *
+     * @param graph the graph to be added
+     */
+    public void addGraph(SimpleBoardGraph graph) {
+        this.graph = graph;
+    }
+
+
+
+    /**
+     * Gives the grid of Cells in the board
+     *
+     * @return the grid of cells on the game board
+     */
+    public Cell[][] getCells() {
+        return this.cells;
+    }
+
+    /**
+     * Retrieves the Cell at the specified position on the board.
+     *
+     * @param x the X-coordinate of the cell position within the grid
+     * @param y the Y-coordinate of the cell position within the grid
+     * @return the Cell located at the given (x, y) position
+     */
+    public Cell getCell(int x, int y) {
+        return this.cells[x][y];
+    }
+
+
+    /**
+     * Places a specified face in a cell on the board.
+     *
+     * @param x the x-coordinate
+     * @param y the y-coordinate
+     * @param f the face object to be placed
+     * @return true if placement was successful, false otherwise
+     */
+    public boolean placeFaceInTheCell(int x, int y, AbstractFace f) {
+        if (verifIndex(x, y)) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (!PlacementRulesGame.getInstance().canPlaceFace(x, y, f, this)) {
+            return false;
+        }
+        this.cells[x][y].setFace(f);
+
+
+
+
+        return true;
+    }
+
+
+
+    /**
+     * Checks whether the given coordinates (x, y) are out of bounds
+     * of the cells array.
+     *
+     * @param x the x-coordinate of the cell.
+     * @param y the y-coordinate of the cell.
+     * @return true if the coordinates are out of bounds, {@code false} otherwise
+     */
+    protected boolean verifIndex(int x, int y) {
+        return x < 0 || x >= this.cells.length || y < 0 || y >= this.cells[0].length;
+    }
+
+
+    /**
+     * Initializes the grid cells that are part of the border of the board.
+     * This method is responsible for defining specific behaviors or configurations
+     * applicable to the border cells distinct from other regions of the grid.
+     * The implementation of this method must be provided by a concrete subclass.
+     */
+    protected abstract void initBorderCell();
+
+
+    /**
+     * Retrieves the neighboring cell of a specific cell in the direction of the provided side.
+     *
+     * @param i    the row index of the current cell
+     * @param j    the column index of the current cell
+     * @param side the side indicating the direction of the neighbor
+     * @return the neighboring cell, or null if no neighbor exists
+     */
+    public Cell getNeighbour(int i, int j, Side side) {
+        int ni = i, nj = j;
+        if(side ==null){
+            return null;
+        }
+        switch (side) {
+            case TOP:
+                ni = i - 1;
+                break;
+            case BOTTOM:
+                ni = i + 1;
+                break;
+            case LEFT:
+                nj = j - 1;
+                break;
+            case RIGHT:
+                nj = j + 1;
+                break;
+            default:
+                return null;
+        }
+        if (verifIndex(ni, nj)) {
+            return null;
+        }
+        return this.cells[ni][nj];
+    }
+
+
+    /**
+     * Retrieves the graph representation of nodes and edges.
+     *
+     * @return A Graph object representing a structure of nodes and edges.
+     */
+    public Graph<Set<Node>, Edge<Set<Node>>> getGraph() {
+        return this.graph.getGraph();
+    }
+
+    /**
+     * Updates the edges of the graph based on connected nodes.
+     */
+    public void updateEdge() {
+        Set<Set<Node>> vertexSets = this.graph.getSetOfConnections();
+        for (Set<Node> set1 : vertexSets) {
+            for (Set<Node> set2 : vertexSets) {
+                if (set1.equals(set2)) continue;
+
+                boolean edgeExists = this.graph.containsConnection(set1,set2);
+                boolean nodesConnected = false;
+
+                for (Node node1 : set1) {
+                    for (Node node2 : set2) {
+                        if (node1.isConnected(node2)) {
+                            nodesConnected = true;
+                            break;
+                        }
+                    }
+                    if (nodesConnected) break;
+                }
+                if (nodesConnected && !edgeExists) {
+                    this.graph.connectNodeSets(set1, set2);
+                }
+            }
+        }
+    }
+
+
+
+    /**
+     * Updates the vertex set in the graph with inner connections.
+     *
+     * @param innerConnections list of node sets representing connections
+     */
+    public void updateVertex(List<Set<Node>> innerConnections) {
+        for(Set<Node> nodeSet: innerConnections){
+            this.graph.addNodeSet(nodeSet);
+        }
+        updateEdge();
+    }
+
+
+    /**
+     * Retrieves a cell corresponding to a given node in the graph.
+     *
+     * @param node the node for which the cell needs to be retrieved.
+     * @return the corresponding Cell object, or null if the node is not associated with any cell.
+     */
+    public Cell getCellByNode(Node node) {
+        for (int i = 0; i < this.cells.length; i++) {
+            for (int j = 0; j < this.cells[i].length; j++) {
+                if (this.cells[i][j].containsNode(node)) {
+                    return this.cells[i][j];
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Retrieves a cell on the board that contains the specified node within its inner connections.
+     * This method searches the grid of cells to find the one that has the node in its inner connections.
+     *
+     * @param node the node for which the corresponding cell with inner connections needs to be found
+     * @return the Cell object that contains the specified node in its inner connections, or null if no such cell is found
+     */
+    public Cell getCellByNodeWithInnerConnections(Node node) {
+        for (int i = 0; i < this.cells.length; i++) {
+            for (int j = 0; j < this.cells[i].length; j++) {
+                if (this.cells[i][j].containsNodeInInnerConnections(node)) {
+                    return this.cells[i][j];
+                }
+            }
+        }
+        return null;
+    }
+}

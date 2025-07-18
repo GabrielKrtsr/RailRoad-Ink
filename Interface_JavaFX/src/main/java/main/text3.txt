@@ -1,0 +1,42 @@
+admin ENTERS
+admin ELECTS admin
+a ENTERS
+b ENTERS
+a ELECTS a
+b ELECTS b
+a PLAYS
+admin THROWS Hj H Hc Hc
+a PLACES Hj L B1
+a PLACES H R A1
+a PLACES Hc FL C1
+a PLACES Hc F C2
+admin THROWS Rc R R Hc
+a PLACES Hc FU B2
+a PLACES R null D1
+a PLACES R null D2
+a PLACES Rc L D3
+admin THROWS R Sc S Hc
+a PLACES Sc null B3
+a PLACES S null C3
+a PLACES R null C4
+a PLACES Hc null C4
+admin THROWS Hj H Sc Hc
+a PLACES Hj L B1
+a PLACES H R A1
+a PLACES Sc FL C1
+a PLACES Hc F C2
+admin THROWS Rc R R Hc
+a PLACES Hc FU B2
+a PLACES R null D1
+a PLACES R null D2
+a PLACES Rc L D3
+admin THROWS R Sc R Hc
+a PLACES Sc null B3
+a PLACES R null C3
+a PLACES R null C4
+a PLACES Hc null C4
+admin THROWS Hj H Hc H
+a PLACES Hj L B1
+a PLACES H R A1
+a PLACES H FL C1
+a PLACES Hc F C2

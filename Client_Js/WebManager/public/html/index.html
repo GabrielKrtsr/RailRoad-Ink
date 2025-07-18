@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nom de l'auteur">
+    <meta name="description" content="RailRoadInk - Un jeu de société stratégique.">
+    <meta name="keywords" content="RailRoadInk, jeu de société, parties, jeux de stratégie">
+    <meta name="robots" content="index, follow">
+    <title>RailRoadInk</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(to right, #4a4e69, #22223b);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+    gap: 30px;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 18px;
+    background: linear-gradient(to right, #4a90e2, #50c878);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(74, 144, 226, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(74, 144, 226, 0.4);
+    background: linear-gradient(to right, #50c878, #4a90e2);
+}
+
+footer {
+    text-align: center;
+    background: linear-gradient(to right, #4a4e69, #22223b);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+    </style>
+</head>
+<body>
+
+    <!-- En-tête du site -->
+    <header>
+        <h1>RailRoadInk</h1>
+    </header>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <a href="/jeu" class="btn">Jouer</a>
+        <a href="/partie" class="btn">Voir parties</a>
+    </div>
+    
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2025 RailRoadInk. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

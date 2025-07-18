@@ -1,0 +1,18 @@
+C:\Users\yassi\AppData\Local\Programs\stack\x86_64-windows\ghc-9.4.6\lib\x86_64-windows-ghc-9.4.6\rts-1.0.2\include\ghcversion.h:
+  hash: 9f61551ef9df85e1257da78fd2006c602a1beb0bcd3b9bafbaa1d1cfddebc078
+? C:\Users\yassi\OneDrive\Desktop\client-haskell\src\main\haskell\client\.stack-work\dist\51f21a8f\build\client\autogen\Paths_client.hs
+: hash: eefc325451c69e4d0e514b8c3de64317aa37e7c7acbfbca4fb2a600bd3abd25d
+? C:\Users\yassi\OneDrive\Desktop\client-haskell\src\main\haskell\client\.stack-work\dist\51f21a8f\build\client\autogen\cabal_macros.h
+: hash: b98597bfb7941ce614de26c9e409e0170630b0ac050442de6baea0619fe1e3e8
+C:\Users\yassi\OneDrive\Desktop\client-haskell\src\main\haskell\client\app\Automaton.hs:
+  hash: 62ceaacb04ac4f7d78a20ca84338cddf63588bfc773c4e3a8786bc0ce8929af5
+C:\Users\yassi\OneDrive\Desktop\client-haskell\src\main\haskell\client\app\Client.hs:
+  hash: 1355b929e21541a4994b1f1b548ed9be98be44fb92ac6ff2c7db13e1a64197b3
+C:\Users\yassi\OneDrive\Desktop\client-haskell\src\main\haskell\client\app\Main.hs:
+  hash: 2599b3ae57af43a26938ec3942b44193b94f613997e0a471c57d910f2c79215f
+C:\Users\yassi\OneDrive\Desktop\client-haskell\src\main\haskell\client\app\MessageValidator.hs:
+  hash: 2f36b3e28ebb1d87d80c63a18b7aa5e813f5d50923bd325bc792a668e26d9f39
+C:\Users\yassi\OneDrive\Desktop\client-haskell\src\main\haskell\client\client.cabal:
+  hash: cc9913a9e874ee99c137e7d66b978f1c7020e322a549597821babadaa9f63133
+C:\Users\yassi\OneDrive\Desktop\client-haskell\src\main\haskell\client\package.yaml:
+  hash: d7dde2fd26a47a7bd3aa06f05545c684040aad6cb3cbea5bb50e321b39f686b6

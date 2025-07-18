@@ -1,0 +1,80 @@
+.root {
+    -fx-background-color: #f2f2f2;
+}
+
+@font-face {
+    font-family: Public Pixel;
+    src: url('PublicPixel-eZPz6.ttf');
+}
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    -fx-text-fill: #333333;
+    -fx-font-family: 'Public Pixel', sans-serif;
+    -fx-font-size: 8px;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(gaussian, #999999, 6, 0.9, 2, 2);
+    -fx-border-radius: 5px;
+    -fx-pref-width: 130px;
+    -fx-pref-height: 35px;
+}
+
+#selectionButton {
+    -fx-pref-width: 220px;
+    -fx-background-color: linear-gradient(to bottom, #4d4d4d, #333333);
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #a6a6a6;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #4d4d4d, #333333);
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+#selectionButton:hover {
+    -fx-text-fill: #e6e6e6;
+    -fx-border-color: #cccccc;
+    -fx-cursor: hand;
+}
+
+#checkContainer {
+    -fx-font-family: 'Public Pixel', sans-serif;
+    -fx-font-size: 9px;
+    -fx-background-color: #cccccc;
+    -fx-text-fill: #333333;
+    -fx-margin: 20px;
+    -fx-padding: 20px;
+}
+
+.checkbox {
+    -fx-font-family: 'Public Pixel', sans-serif;
+    -fx-font-size: 10px;
+    -fx-text-fill: #333333;
+    -fx-spacing: 20px;
+    -fx-border-color: #999999;
+    -fx-border-width: 4px;
+    -fx-border-style: solid;
+    -fx-padding: 8px;
+    -fx-effect: dropshadow(gaussian, #cccccc, 4, 0.8, 1, 1);
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.checkbox:hover {
+    -fx-border-color: #666666;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: linear-gradient(to bottom, #4d4d4d, #333333);
+}
+
+.checkbox .text {
+    -fx-fill: #333333;
+    -fx-font-family: 'Public Pixel', sans-serif;
+    -fx-font-size: 10px;
+}
+
+.checkbox:hover .text {
+    -fx-fill: #ffffff;
+}

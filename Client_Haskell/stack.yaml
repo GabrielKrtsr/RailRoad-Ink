@@ -1,0 +1,11 @@
+resolver: lts-21.10
+
+packages:
+  - src/main/haskell/client
+
+extra-deps: []
+
+system-ghc: true
+allow-newer: true
+
+local-bin-path: target/haskell-bin

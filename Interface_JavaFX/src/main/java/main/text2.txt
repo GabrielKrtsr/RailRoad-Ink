@@ -1,0 +1,29 @@
+admin ENTERS
+admin ELECTS admin
+a ENTERS
+b ENTERS
+a ELECTS a
+b ELECTS b
+a PLAYS
+admin THROWS H H H H
+a PLACES H null B1
+a PLACES H null B2
+b PLACES H null B1
+b PLACES H null B2
+admin THROWS H H H H
+a PLACES H null B3
+a PLACES H null B4
+a ELECTS a
+b ELECTS b
+a PLAYS
+admin THROWS H H H H
+a PLACES H null B1
+a PLACES H null B2
+b PLACES H null B1
+b PLACES H null B2
+admin THROWS H H H H
+a PLACES H null B3
+a PLACES H null B4
+a PLACES H null B3
+a PLACES H null B4
+
